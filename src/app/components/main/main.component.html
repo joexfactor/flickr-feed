@@ -1,0 +1,136 @@
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+  <div class="container">
+    <div class="navbar-translate">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <img src="../../../assets/img/flickr.png">
+        <h3 class="title ml-3">Flickr Feed</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/flickr" target="_blank" data-original-title="Follow us on Twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/flickr" target="_blank"
+            data-original-title="Like us on Facebook">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://flickr.tumblr.com/" target="_blank" data-original-title="Follow us on Tumblr">
+            <i class="fa fa-tumblr"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/profile_city.jpg')">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6">
+        <h1 class="title">Find your inspiration.</h1>
+        <br>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card card-login">
+          <form class="form" method="" action="">
+            <div class="card-header card-header-danger text-center">
+              <h3 class="card-title">Search By</h3>
+
+              <div class="nav-tabs-navigation mt-4">
+                <div class="nav-tabs-wrapper">
+                  <div class="d-flex flex-row justify-content-center my-flex-container">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#profile" data-toggle="tab" (click)="clickImage($event)">
+                          <i class="material-icons">insert_photo</i>
+                          Image
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#messages" data-toggle="tab" (click)="clickAuthor($event)">
+                          <i class="material-icons">face</i>
+                          Author
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#settings" data-toggle="tab" (click)="clickTags($event)">
+                          <i class="material-icons">local_activity</i>
+                          Tags
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body mt-5">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">search</i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchContent" name="content" (change)="contentChange()">
+              </div>
+              <br>
+            </div>
+            <div class="footer text-center mt-5">
+              <button type="button" class="btn btn-danger btn-wd btn-lg" (click)="searchFeeds($event)">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main main-raised" *ngIf="isResultPanelAvailable">
+  <div class="container">
+    <div class="section text-center" id="result">
+      <h2 class="title">{{prompt}}</h2>
+      <div class="team">
+        <div class="row" *ngIf="isResultAvailable">
+
+          <div class="col-md-6" *ngFor="let item of items | paginate: { itemsPerPage: 6, currentPage: p }">
+            <div class="team-player">
+              <div class="card card-plain">
+                <div class="col-md-6 ml-auto mr-auto">
+                  <a href={{item.link}} target="_blank">
+                    <img src={{item.media.m}} alt="Thumbnail Image" class="img-raised rounded-raised img-fluid">
+                  </a>
+                </div>
+                <h4 class="card-title">{{item.title}}
+                  <br>
+                  <small class="card-description text-muted">{{item.author_id}}</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">{{item.author}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="isResultAvailable">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
