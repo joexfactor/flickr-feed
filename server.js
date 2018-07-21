@@ -3,8 +3,6 @@ const app = express();
 const path = require('path');
 app.use(express.static('./dist/flickr-feed-angular'));
 app.get('/*', function (req, res) {
-  res.sendFile("index.html", {
-    "root": __dirname
-  });
+  res.sendFile(path.join(__dirname, '/dist/flickr-feed-angular/index.html'));
 });
 app.listen(process.env.PORT || 8080);
