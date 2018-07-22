@@ -85,7 +85,8 @@
                     <i class="material-icons">search</i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchContent" name="content" (change)="contentChange()">
+                <input type="text" class="form-control" readonly={{isSearchAvailable}} placeholder={{searchPlaceHolder}} [(ngModel)]="searchContent"
+                  name="content" (change)="contentChange()">
               </div>
               <br>
             </div>

@@ -17,6 +17,8 @@ export class MainComponent implements OnInit {
   prompt: string;
   isResultAvailable: boolean;
   isResultPanelAvailable: boolean;
+  isSearchAvailable: string;
+  searchPlaceHolder: string;
 
   constructor(private feedService: FeedService) { }
 
@@ -27,6 +29,8 @@ export class MainComponent implements OnInit {
     this.prompt = '';
     this.isResultAvailable = false;
     this.isResultPanelAvailable = false;
+    this.isSearchAvailable = 'readonly';
+    this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
   }
 
   searchFeeds(event) {
@@ -79,21 +83,30 @@ export class MainComponent implements OnInit {
   }
 
   clickImage(event) {
+    this.searchContent = '';
     this.isImageClicked = true;
     this.isAuthorClicked = false;
     this.isTagsClicked = false;
+    this.isSearchAvailable = 'readonly';
+    this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
   }
 
   clickAuthor(event) {
+    this.searchContent = '';
     this.isImageClicked = false;
     this.isAuthorClicked = true;
     this.isTagsClicked = false;
+    this.isSearchAvailable = '';
+    this.searchPlaceHolder = 'Search by Author ID';
   }
 
   clickTags(event) {
+    this.searchContent = '';
     this.isImageClicked = false;
     this.isAuthorClicked = false;
     this.isTagsClicked = true;
+    this.isSearchAvailable = '';
+    this.searchPlaceHolder = 'Search by Tags, seperated by comma';
   }
 
   contentChange() {
