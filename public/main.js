@@ -158,7 +158,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg\" color-on-scroll=\"100\" id=\"sectionsNav\">\n  <div class=\"container\">\n    <div class=\"navbar-translate\">\n      <a href=\"#\" class=\"navbar-brand d-flex align-items-center\">\n        <img src=\"../../../assets/img/flickr.png\">\n        <h3 class=\"title ml-3\">Flickr Feed</h3>\n      </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"navbar-toggler-icon\"></span>\n        <span class=\"navbar-toggler-icon\"></span>\n        <span class=\"navbar-toggler-icon\"></span>\n      </button>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://twitter.com/flickr\" target=\"_blank\" data-original-title=\"Follow us on Twitter\">\n            <i class=\"fa fa-twitter\"></i>\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://www.facebook.com/flickr\" target=\"_blank\"\n            data-original-title=\"Like us on Facebook\">\n            <i class=\"fa fa-facebook-square\"></i>\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://flickr.tumblr.com/\" target=\"_blank\" data-original-title=\"Follow us on Tumblr\">\n            <i class=\"fa fa-tumblr\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div class=\"page-header header-filter\" data-parallax=\"true\" style=\"background-image: url('../assets/img/profile_city.jpg')\">\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-md-6\">\n        <h1 class=\"title\">Find your inspiration.</h1>\n        <br>\n      </div>\n\n      <div class=\"col-md-6\">\n        <div class=\"card card-login\">\n          <form class=\"form\" method=\"\" action=\"\">\n            <div class=\"card-header card-header-danger text-center\">\n              <h3 class=\"card-title\">Search By</h3>\n\n              <div class=\"nav-tabs-navigation mt-4\">\n                <div class=\"nav-tabs-wrapper\">\n                  <div class=\"d-flex flex-row justify-content-center my-flex-container\">\n                    <ul class=\"nav nav-tabs\" data-tabs=\"tabs\">\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link active\" href=\"#profile\" data-toggle=\"tab\" (click)=\"clickImage($event)\">\n                          <i class=\"material-icons\">insert_photo</i>\n                          Image\n                        </a>\n                      </li>\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"#messages\" data-toggle=\"tab\" (click)=\"clickAuthor($event)\">\n                          <i class=\"material-icons\">face</i>\n                          Author\n                        </a>\n                      </li>\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"#settings\" data-toggle=\"tab\" (click)=\"clickTags($event)\">\n                          <i class=\"material-icons\">local_activity</i>\n                          Tags\n                        </a>\n                      </li>\n                    </ul>\n                  </div>\n                </div>\n              </div>\n\n            </div>\n            <div class=\"card-body mt-5\">\n              <div class=\"input-group\">\n                <div class=\"input-group-prepend\">\n                  <span class=\"input-group-text\">\n                    <i class=\"material-icons\">search</i>\n                  </span>\n                </div>\n                <input type=\"text\" class=\"form-control\" readonly={{isSearchAvailable}} placeholder={{searchPlaceHolder}} [(ngModel)]=\"searchContent\"\n                  name=\"content\" (change)=\"contentChange()\">\n              </div>\n              <br>\n            </div>\n            <div class=\"footer text-center mt-5\">\n              <button type=\"button\" class=\"btn btn-danger btn-wd btn-lg\" (click)=\"searchFeeds($event)\">Submit</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"main main-raised\" *ngIf=\"isResultPanelAvailable\">\n  <div class=\"container\">\n    <div class=\"section text-center\" id=\"result\">\n      <h2 class=\"title\">{{prompt}}</h2>\n      <div class=\"team\">\n        <div class=\"row\" *ngIf=\"isResultAvailable\">\n\n          <div class=\"col-md-6\" *ngFor=\"let item of items | paginate: { itemsPerPage: 6, currentPage: p }\">\n            <div class=\"team-player\">\n              <div class=\"card card-plain\">\n                <div class=\"col-md-6 ml-auto mr-auto\">\n                  <a href={{item.link}} target=\"_blank\">\n                    <img src={{item.media.m}} alt=\"Thumbnail Image\" class=\"img-raised rounded-raised img-fluid\">\n                  </a>\n                </div>\n                <h4 class=\"card-title\">{{item.title}}\n                  <br>\n                  <small class=\"card-description text-muted\">{{item.author_id}}</small>\n                </h4>\n                <div class=\"card-body\">\n                  <p class=\"card-description\">{{item.author}}\n                </div>\n              </div>\n            </div>\n          </div>\n\n        </div>\n        <div *ngIf=\"isResultAvailable\">\n          <pagination-controls (pageChange)=\"p = $event\"></pagination-controls>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<!-- nav bar -->\n<nav class=\"navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg\" color-on-scroll=\"100\" id=\"sectionsNav\">\n  <div class=\"container\">\n    <div class=\"navbar-translate\">\n      <a href=\"#\" class=\"navbar-brand d-flex align-items-center\">\n        <img src=\"../../../assets/img/flickr.png\">\n        <h3 class=\"title ml-3\">Flickr Feed</h3>\n      </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"navbar-toggler-icon\"></span>\n        <span class=\"navbar-toggler-icon\"></span>\n        <span class=\"navbar-toggler-icon\"></span>\n      </button>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://twitter.com/flickr\" target=\"_blank\" data-original-title=\"Follow us on Twitter\">\n            <i class=\"fa fa-twitter\"></i>\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://www.facebook.com/flickr\" target=\"_blank\"\n            data-original-title=\"Like us on Facebook\">\n            <i class=\"fa fa-facebook-square\"></i>\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" rel=\"tooltip\" title=\"\" data-placement=\"bottom\" href=\"https://flickr.tumblr.com/\" target=\"_blank\" data-original-title=\"Follow us on Tumblr\">\n            <i class=\"fa fa-tumblr\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n<!-- end nav bar -->\n\n<!-- search section -->\n<div class=\"page-header header-filter\" data-parallax=\"true\" style=\"background-image: url('../assets/img/profile_city.jpg')\">\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-md-6\">\n        <h1 class=\"title\">Find your inspiration.</h1>\n        <br>\n      </div>\n\n      <div class=\"col-md-6\">\n        <div class=\"card card-login\">\n          <form class=\"form\" method=\"\" action=\"\">\n            <div class=\"card-header card-header-danger text-center\">\n              <h3 class=\"card-title\">Search By</h3>\n\n              <div class=\"nav-tabs-navigation mt-4\">\n                <div class=\"nav-tabs-wrapper\">\n                  <div class=\"d-flex flex-row justify-content-center my-flex-container\">\n                    <ul class=\"nav nav-tabs\" data-tabs=\"tabs\">\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link active\" href=\"#profile\" data-toggle=\"tab\" (click)=\"clickImage($event)\">\n                          <i class=\"material-icons\">insert_photo</i>\n                          Image\n                        </a>\n                      </li>\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"#messages\" data-toggle=\"tab\" (click)=\"clickAuthor($event)\">\n                          <i class=\"material-icons\">face</i>\n                          Author\n                        </a>\n                      </li>\n                      <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"#settings\" data-toggle=\"tab\" (click)=\"clickTags($event)\">\n                          <i class=\"material-icons\">local_activity</i>\n                          Tags\n                        </a>\n                      </li>\n                    </ul>\n                  </div>\n                </div>\n              </div>\n\n            </div>\n            <div class=\"card-body mt-5\">\n              <div class=\"input-group\">\n                <div class=\"input-group-prepend\">\n                  <span class=\"input-group-text\">\n                    <i class=\"material-icons\">search</i>\n                  </span>\n                </div>\n                <input type=\"text\" class=\"form-control\" readonly={{isSearchBarReadOnly}} placeholder={{searchPlaceHolder}} [(ngModel)]=\"searchContent\"\n                  name=\"content\" (change)=\"contentChange()\">\n              </div>\n              <br>\n            </div>\n            <div class=\"footer text-center mt-5\">\n              <button type=\"button\" class=\"btn btn-danger btn-wd btn-lg\" (click)=\"searchFeeds($event)\">Submit</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<!-- end search section -->\n\n<!-- result section -->\n<div class=\"main main-raised\" *ngIf=\"isResultPanelAvailable\">\n  <div class=\"container\">\n    <div class=\"section text-center\" id=\"result\">\n      <h2 class=\"title\">{{prompt}}</h2>\n      <div class=\"team\">\n        <div class=\"row\" *ngIf=\"isResultAvailable\">\n\n          <div class=\"col-md-6\" *ngFor=\"let item of items | paginate: { itemsPerPage: 6, currentPage: p }\">\n            <div class=\"team-player\">\n              <div class=\"card card-plain\">\n                <div class=\"col-md-6 ml-auto mr-auto\">\n                  <a href={{item.link}} target=\"_blank\">\n                    <img src={{item.media.m}} alt=\"Thumbnail Image\" class=\"img-raised rounded-raised img-fluid\">\n                  </a>\n                </div>\n                <h4 class=\"card-title\">{{item.title}}\n                  <br>\n                  <small class=\"card-description text-muted\">{{item.author_id}}</small>\n                </h4>\n                <div class=\"card-body\">\n                  <p class=\"card-description\">{{item.author}}\n                </div>\n              </div>\n            </div>\n          </div>\n\n        </div>\n        <div *ngIf=\"isResultAvailable\">\n          <pagination-controls (pageChange)=\"p = $event\"></pagination-controls>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n<!-- end result section -->\n"
 
 /***/ }),
 
@@ -196,7 +196,7 @@ var MainComponent = /** @class */ (function () {
         this.prompt = '';
         this.isResultAvailable = false;
         this.isResultPanelAvailable = false;
-        this.isSearchAvailable = 'readonly';
+        this.isSearchBarReadOnly = 'readonly';
         this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
     };
     MainComponent.prototype.searchFeeds = function (event) {
@@ -211,7 +211,7 @@ var MainComponent = /** @class */ (function () {
                 console.log(_this.allFeeds);
                 _this.isResultAvailable = true;
             }, function (err) {
-                console.log('No data');
+                console.log('No Result');
                 _this.prompt = 'There were no results found.';
                 _this.isResultAvailable = false;
             });
@@ -224,7 +224,7 @@ var MainComponent = /** @class */ (function () {
                 console.log(_this.allFeeds);
                 _this.isResultAvailable = true;
             }, function (err) {
-                console.log('No data');
+                console.log('No Result');
                 _this.prompt = 'There were no results found.';
                 _this.isResultAvailable = false;
             });
@@ -237,7 +237,7 @@ var MainComponent = /** @class */ (function () {
                 console.log(_this.allFeeds);
                 _this.isResultAvailable = true;
             }, function (err) {
-                console.log('No data');
+                console.log('No Result');
                 _this.prompt = 'There were no results found.';
                 _this.isResultAvailable = false;
             });
@@ -248,7 +248,7 @@ var MainComponent = /** @class */ (function () {
         this.isImageClicked = true;
         this.isAuthorClicked = false;
         this.isTagsClicked = false;
-        this.isSearchAvailable = 'readonly';
+        this.isSearchBarReadOnly = 'readonly';
         this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
     };
     MainComponent.prototype.clickAuthor = function (event) {
@@ -256,7 +256,7 @@ var MainComponent = /** @class */ (function () {
         this.isImageClicked = false;
         this.isAuthorClicked = true;
         this.isTagsClicked = false;
-        this.isSearchAvailable = '';
+        this.isSearchBarReadOnly = '';
         this.searchPlaceHolder = 'Search by Author ID';
     };
     MainComponent.prototype.clickTags = function (event) {
@@ -264,7 +264,7 @@ var MainComponent = /** @class */ (function () {
         this.isImageClicked = false;
         this.isAuthorClicked = false;
         this.isTagsClicked = true;
-        this.isSearchAvailable = '';
+        this.isSearchBarReadOnly = '';
         this.searchPlaceHolder = 'Search by Tags, seperated by comma';
     };
     MainComponent.prototype.contentChange = function () {
@@ -311,17 +311,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var FeedService = /** @class */ (function () {
     function FeedService(http) {
         this.http = http;
+        // flickr feed api from https://www.flickr.com/services/feeds/docs/photos_public/
         this.apiRoot = 'https://api.flickr.com/services/feeds/photos_public.gne';
     }
+    // get all latest feeds, default size is 20
     FeedService.prototype.getAllFeeds = function () {
         var apiURL = this.apiRoot + "?format=json&jsoncallback=JSONP_CALLBACK";
         return this.http.jsonp(apiURL, 'JSONP_CALLBACK');
     };
+    // get feeds by a single user ID
     FeedService.prototype.getFeedsByUserId = function (id) {
         var apiURL = this.apiRoot + "?format=json&jsoncallback=JSONP_CALLBACK&id=" + id;
         console.log(apiURL);
         return this.http.jsonp(apiURL, 'JSONP_CALLBACK');
     };
+    // get feeds by a comma delimited list of tags
     FeedService.prototype.getFeedsByTags = function (tags) {
         var apiURL = this.apiRoot + "?format=json&jsoncallback=JSONP_CALLBACK&tags=" + tags;
         return this.http.jsonp(apiURL, 'JSONP_CALLBACK');
