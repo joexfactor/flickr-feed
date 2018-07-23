@@ -8,17 +8,23 @@ import { FeedService } from '../../services/feed.service';
 })
 export class MainComponent implements OnInit {
 
+  // check which tab is clicked
   isImageClicked: boolean;
   isAuthorClicked: boolean;
   isTagsClicked: boolean;
-  allFeeds: any;
-  items: any;
+
   searchContent: string;
   prompt: string;
+
+  // results from api
+  allFeeds: any;
+  items: any;
+
+  // control the display logic of the searchbar and result
+  isSearchBarReadOnly: string;
+  searchPlaceHolder: string;
   isResultAvailable: boolean;
   isResultPanelAvailable: boolean;
-  isSearchAvailable: string;
-  searchPlaceHolder: string;
 
   constructor(private feedService: FeedService) { }
 
@@ -29,7 +35,7 @@ export class MainComponent implements OnInit {
     this.prompt = '';
     this.isResultAvailable = false;
     this.isResultPanelAvailable = false;
-    this.isSearchAvailable = 'readonly';
+    this.isSearchBarReadOnly = 'readonly';
     this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
   }
 
@@ -46,7 +52,7 @@ export class MainComponent implements OnInit {
         console.log(this.allFeeds);
         this.isResultAvailable = true;
       }, err => {
-        console.log('No data');
+        console.log('No Result');
         this.prompt = 'There were no results found.';
         this.isResultAvailable = false;
       });
@@ -60,7 +66,7 @@ export class MainComponent implements OnInit {
         console.log(this.allFeeds);
         this.isResultAvailable = true;
       }, err => {
-        console.log('No data');
+        console.log('No Result');
         this.prompt = 'There were no results found.';
         this.isResultAvailable = false;
       });
@@ -74,12 +80,11 @@ export class MainComponent implements OnInit {
         console.log(this.allFeeds);
         this.isResultAvailable = true;
       }, err => {
-        console.log('No data');
+        console.log('No Result');
         this.prompt = 'There were no results found.';
         this.isResultAvailable = false;
       });
     }
-
   }
 
   clickImage(event) {
@@ -87,7 +92,7 @@ export class MainComponent implements OnInit {
     this.isImageClicked = true;
     this.isAuthorClicked = false;
     this.isTagsClicked = false;
-    this.isSearchAvailable = 'readonly';
+    this.isSearchBarReadOnly = 'readonly';
     this.searchPlaceHolder = 'Search by Image is not supported by Flickr API';
   }
 
@@ -96,7 +101,7 @@ export class MainComponent implements OnInit {
     this.isImageClicked = false;
     this.isAuthorClicked = true;
     this.isTagsClicked = false;
-    this.isSearchAvailable = '';
+    this.isSearchBarReadOnly = '';
     this.searchPlaceHolder = 'Search by Author ID';
   }
 
@@ -105,7 +110,7 @@ export class MainComponent implements OnInit {
     this.isImageClicked = false;
     this.isAuthorClicked = false;
     this.isTagsClicked = true;
-    this.isSearchAvailable = '';
+    this.isSearchBarReadOnly = '';
     this.searchPlaceHolder = 'Search by Tags, seperated by comma';
   }
 
